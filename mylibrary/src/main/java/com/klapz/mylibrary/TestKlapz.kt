@@ -13,14 +13,22 @@ class TestKlapz : AppCompatActivity() {
 
         var  kalpz = KlapzConfig();
 
+
+        var klapzButton = KlapzButton(this)
+        klapzButton.ShowKlap()
+
         val obj = JSONObject()
         obj.put("title", "Klapz this content")
-        obj.put("klapz", 10)
+        obj.put("klapz", 2)
         obj.put("createrID", "createrID")
-        obj.put("Url", "")
+        obj.put("Url", "https://stackoverflow.com/questions/40573380/textview-not-updating")
+        //Direct //Default
+        obj.put("Mode", "Direct")
 
 
-        kalpz.Start("XXXXXXXX",this)
+        //SendBox /Production
+        kalpz.Start("XXXXXXXX",this,"SendBox")
+
         kalpz.Config(obj,this)
 
 

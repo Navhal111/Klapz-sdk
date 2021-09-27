@@ -5,9 +5,16 @@ import org.json.JSONObject
 
 class KlapzConfig {
     
-    fun Start(key:String,context: Context){
+    fun Start(key:String,context: Context,environment:String){
         val pref = context.getSharedPreferences("MyPref", 0)
         val editor: SharedPreferences.Editor = pref.edit()
+
+        if(pref.getString("KlapEnvirment", "First") !=  "First"){
+            if(pref.getString("KlapEnvirment", "First").toString() !=  environment){
+                editor.remove("Klapztoken")
+            }
+        }
+        editor.putString("KlapEnvirment", environment);
         editor.putString("Klapzkey", key);
         editor.apply()
     }
